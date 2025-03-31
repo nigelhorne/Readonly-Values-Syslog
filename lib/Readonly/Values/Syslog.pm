@@ -42,6 +42,7 @@ Readonly::Hash our %syslog_values => (
 	'alert' => $ALERT,
 	'criticial' => $CRITICAL,
 	'error' => $ERROR,
+	'err' => $ERROR,
 	'warning' => $WARNING,
 	'warn' => $WARNING,
 	'notice' => $NOTICE,
