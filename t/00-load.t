@@ -3,7 +3,8 @@
 use warnings;
 use strict;
 
-use Test::Most tests => 2;
+use Test::Most tests => 3;
+use Test::NoWarnings;
 
 BEGIN {
 	use_ok('Readonly::Values::Syslog') || print 'Bail out!';

@@ -2,7 +2,8 @@
 
 use strict;
 use warnings;
-use Test::Most;
+
+use Test::Most tests => 4;
 
 BEGIN { use_ok('Readonly::Values::Syslog') }
 
