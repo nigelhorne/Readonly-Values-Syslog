@@ -6,5 +6,6 @@ README.md
 t/00-load.t
 t/eof.t
 t/eol.t
+t/pod-cm.t
 t/pod.t
 t/values.t
