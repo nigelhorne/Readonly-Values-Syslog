@@ -1,13 +1,6 @@
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
-use File::Spec;
-
-my $tmpdir = File::Spec->tmpdir();
-if(!-w $tmpdir) {
-	print STDERR "NA: Your temporary directory '$tmpdir' isn't writable, fix your configuration and try again";
-	exit(0);
-}
 
 my $dist = {
 	COMPRESS => 'gzip -9f',	# Compress tarball using gzip
