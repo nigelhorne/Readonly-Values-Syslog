@@ -19,6 +19,23 @@ Version 0.01
 
 our $VERSION = '0.01';
 
+=head1 SYNOPSIS
+
+    use Readonly::Values::Syslog;
+
+    # Example usage in logging
+    sub log_message {
+        my ($level, $message) = @_;
+
+        if (exists($syslog_values{$level})) {
+            print "[$level] $message\n";
+        } else {
+            print "[UNKNOWN] $message\n";
+        }
+    }
+
+=cut
+
 Readonly::Enum our ($EMERGENCY, $ALERT, $CRITICAL, $ERROR, $WARNING, $NOTICE, $INFORMATIONAL, $DEBUG) => 0;
 Readonly::Hash our %syslog_values => (
 	'emergency' => $EMERGENCY,

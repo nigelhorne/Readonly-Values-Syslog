@@ -6,6 +6,21 @@ Readonly::Values::Syslog - Syslog Constants
 
 Version 0.01
 
+# SYNOPSIS
+
+    use Readonly::Values::Syslog;
+
+    # Example usage in logging
+    sub log_message {
+        my ($level, $message) = @_;
+
+        if (exists($syslog_values{$level})) {
+            print "[$level] $message\n";
+        } else {
+            print "[UNKNOWN] $message\n";
+        }
+    }
+
 # AUTHOR
 
 Nigel Horne, `<njh at nigelhorne.com>`
