@@ -1,0 +1,6 @@
+lib/Readonly/Values/Syslog.pm
+LICENSE
+Makefile.PL
+MANIFEST			This list of files
+README.md
+t/values.t
