@@ -47,6 +47,7 @@ Readonly::Hash our %syslog_values => (
 	'notice' => $NOTICE,
 	'informational' => $INFORMATIONAL,
 	'info' => $INFORMATIONAL,
+	'trace' => $INFORMATIONAL,
 	'debug' => $DEBUG
 );
 
