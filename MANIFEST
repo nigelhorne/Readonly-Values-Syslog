@@ -11,4 +11,5 @@ t/eol.t
 t/pod-cm.t
 t/pod-synopsis.t
 t/pod.t
+t/syslog.t
 t/values.t
