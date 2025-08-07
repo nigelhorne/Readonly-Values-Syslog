@@ -4,7 +4,7 @@ Readonly::Values::Syslog - RFC 3164 compliant syslog severity level constants
 
 # VERSION
 
-Version 0.03
+Version 0.04
 
 # DESCRIPTION
 
@@ -137,24 +137,6 @@ Accepts both numeric and string levels.
 
     my $cmp = compare_syslog_levels('error', 'warning');  # Returns -1 (error < warning)
     my $cmp = compare_syslog_levels(2, 4);               # Returns -1 (critical < warning)
-
-# DEPRECATION NOTICE
-
-The hash `%syslog_values` is deprecated in favor of `%SYSLOG_LEVELS` for
-consistency with the module naming convention. The old name will continue
-to work for backward compatibility.
-
-# THREAD SAFETY
-
-This module is thread-safe. All data structures are read-only after module
-initialization.
-
-# PERFORMANCE NOTES
-
-\- Hash lookups are O(1) for level name/number conversions
-\- All data structures use Readonly for memory efficiency
-\- String comparisons are case-insensitive with whitespace trimming
-\- Numeric validation uses Scalar::Util::looks\_like\_number for safety
 
 # FORMAL SPECIFICATION
 

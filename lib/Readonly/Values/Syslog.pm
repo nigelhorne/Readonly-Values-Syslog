@@ -11,7 +11,7 @@ use Readonly::Enum;
 use Exporter qw(import);
 use Scalar::Util qw(looks_like_number);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 NAME
 
@@ -19,7 +19,7 @@ Readonly::Values::Syslog - RFC 3164 compliant syslog severity level constants
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 DESCRIPTION
 
@@ -387,26 +387,6 @@ our %EXPORT_TAGS = (
     'rfc3164'   => [qw($SYSLOG_EMERGENCY $SYSLOG_ALERT $SYSLOG_CRITICAL $SYSLOG_ERROR
                       $SYSLOG_WARNING $SYSLOG_NOTICE $SYSLOG_INFO $SYSLOG_DEBUG)],
 );
-
-=head1 DEPRECATION NOTICE
-
-The hash C<%syslog_values> is deprecated in favor of C<%SYSLOG_LEVELS> for
-consistency with the module naming convention. The old name will continue
-to work for backward compatibility.
-
-=head1 THREAD SAFETY
-
-This module is thread-safe. All data structures are read-only after module
-initialization.
-
-=head1 PERFORMANCE NOTES
-
-- Hash lookups are O(1) for level name/number conversions
-- All data structures use Readonly for memory efficiency
-- String comparisons are case-insensitive with whitespace trimming
-- Numeric validation uses Scalar::Util::looks_like_number for safety
-
-=cut
 
 # Validate module consistency at compile time
 BEGIN {
