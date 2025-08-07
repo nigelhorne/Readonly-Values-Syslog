@@ -1,3 +1,4 @@
+bin/syslog-utils
 Changes
 lib/Readonly/Values/Syslog.pm
 LICENSE
