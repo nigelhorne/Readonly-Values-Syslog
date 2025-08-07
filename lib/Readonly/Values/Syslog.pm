@@ -11,7 +11,7 @@ use Readonly::Enum;
 use Exporter qw(import);
 use Scalar::Util qw(looks_like_number);
 
-our $VERSION = '0.04';
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -19,7 +19,7 @@ Readonly::Values::Syslog - RFC 3164 compliant syslog severity level constants
 
 =head1 VERSION
 
-Version 0.04
+Version 0.03
 
 =head1 DESCRIPTION
 
