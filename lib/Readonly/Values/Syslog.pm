@@ -161,22 +161,22 @@ Dies with a descriptive error if the level name is invalid.
 =cut
 
 sub get_syslog_level {
-    my $level_name = $_[0];
+	my $level_name = $_[0];
 
-    unless (defined $level_name) {
-        croak 'get_syslog_level: level name is required';
-    }
+	unless (defined $level_name) {
+		croak 'get_syslog_level: level name is required';
+	}
 
-    # Normalize to lowercase for lookup
-    $level_name = lc($level_name);
-    $level_name =~ s/^\s+|\s+$//g;  # Trim whitespace
+	# Normalize to lowercase for lookup
+	$level_name = lc($level_name);
+	$level_name =~ s/^\s+|\s+$//g;  # Trim whitespace
 
-    unless (exists $SYSLOG_LEVELS{$level_name}) {
-        croak "get_syslog_level: invalid syslog level '$level_name'. " .
-              "Valid levels are: " . join(', ', sort keys %SYSLOG_LEVELS);
-    }
+	unless (exists $SYSLOG_LEVELS{$level_name}) {
+		croak "get_syslog_level: invalid syslog level '$level_name'. " .
+			'Valid levels are: ' . join(', ', sort keys %SYSLOG_LEVELS);
+	}
 
-    return $SYSLOG_LEVELS{$level_name};
+	return $SYSLOG_LEVELS{$level_name};
 }
 
 =head2 get_syslog_name($level_number)
@@ -190,25 +190,25 @@ Dies with a descriptive error if the level number is invalid.
 =cut
 
 sub get_syslog_name {
-    my $level_number = $_[0];
+	my $level_number = $_[0];
 
-    unless (defined $level_number) {
-        croak 'get_syslog_name: level number is required';
-    }
+	unless (defined $level_number) {
+		croak 'get_syslog_name: level number is required';
+	}
 
-    unless (looks_like_number($level_number)) {
-        croak "get_syslog_name: level must be numeric, got '$level_number'";
-    }
+	unless (looks_like_number($level_number)) {
+		croak "get_syslog_name: level must be numeric, got '$level_number'";
+	}
 
-    # Convert to integer for exact matching
-    $level_number = int($level_number);
+	# Convert to integer for exact matching
+	$level_number = int($level_number);
 
-    unless (exists $SYSLOG_NAMES{$level_number}) {
-        croak "get_syslog_name: invalid syslog level number '$level_number'. " .
-              "Valid levels are: " . join(', ', sort { $a <=> $b } keys %SYSLOG_NAMES);
-    }
+	unless (exists $SYSLOG_NAMES{$level_number}) {
+		croak "get_syslog_name: invalid syslog level number '$level_number'. " .
+			'Valid levels are: ' . join(', ', sort { $a <=> $b } keys %SYSLOG_NAMES);
+	}
 
-    return $SYSLOG_NAMES{$level_number};
+	return $SYSLOG_NAMES{$level_number};
 }
 
 =head2 is_valid_syslog_level($level_name)
@@ -222,14 +222,14 @@ Returns true if the given string is a valid syslog level name (including aliases
 =cut
 
 sub is_valid_syslog_level {
-    my $level_name = $_[0];
+	my $level_name = $_[0];
 
-    return 0 unless defined $level_name;
+	return 0 unless defined $level_name;
 
-    $level_name = lc($level_name);
-    $level_name =~ s/^\s+|\s+$//g;
+	$level_name = lc($level_name);
+	$level_name =~ s/^\s+|\s+$//g;
 
-    return exists $SYSLOG_LEVELS{$level_name};
+	return exists $SYSLOG_LEVELS{$level_name};
 }
 
 =head2 is_valid_syslog_number($level_number)
@@ -243,12 +243,12 @@ Returns true if the given number is a valid syslog severity level.
 =cut
 
 sub is_valid_syslog_number {
-    my $level_number = $_[0];
+	my $level_number = $_[0];
 
-    return 0 unless defined $level_number;
-    return 0 unless looks_like_number($level_number);
+	return 0 unless defined $level_number;
+	return 0 unless looks_like_number($level_number);
 
-    return exists $SYSLOG_NAMES{$level_number};
+	return exists $SYSLOG_NAMES{$level_number};
 }
 
 =head2 get_syslog_description($level)
@@ -262,27 +262,27 @@ level or string name.
 =cut
 
 sub get_syslog_description {
-    my $level = $_[0];
+	my $level = $_[0];
 
-    unless (defined $level) {
-        croak 'get_syslog_description: level is required';
-    }
+	unless (defined $level) {
+		croak 'get_syslog_description: level is required';
+	}
 
-    my $numeric_level;
+	my $numeric_level;
 
-    if (looks_like_number($level)) {
-        $numeric_level = int($level);
-        unless (exists $SYSLOG_NAMES{$numeric_level}) {
-            croak "get_syslog_description: invalid numeric level '$level'";
-        }
-    } else {
-        $numeric_level = eval { get_syslog_level($level) };
-        if ($@) {
-            croak "get_syslog_description: invalid level name '$level'";
-        }
-    }
+	if (looks_like_number($level)) {
+		$numeric_level = int($level);
+		unless (exists $SYSLOG_NAMES{$numeric_level}) {
+			croak "get_syslog_description: invalid numeric level '$level'";
+		}
+	} else {
+		$numeric_level = eval { get_syslog_level($level) };
+		if ($@) {
+			croak "get_syslog_description: invalid level name '$level'";
+		}
+	}
 
-    return $SYSLOG_DESCRIPTIONS{$numeric_level};
+	return $SYSLOG_DESCRIPTIONS{$numeric_level};
 }
 
 =head2 get_all_syslog_levels()
@@ -295,7 +295,7 @@ Returns a list of all valid syslog level names (strings) in severity order.
 =cut
 
 sub get_all_syslog_levels {
-    return map { $SYSLOG_NAMES{$_} } sort { $a <=> $b } keys %SYSLOG_NAMES;
+	return map { $SYSLOG_NAMES{$_} } sort { $a <=> $b } keys %SYSLOG_NAMES;
 }
 
 =head2 get_all_syslog_numbers()
@@ -308,7 +308,7 @@ Returns a list of all valid syslog level numbers in order.
 =cut
 
 sub get_all_syslog_numbers {
-    return sort { $a <=> $b } keys %SYSLOG_NAMES;
+	return sort { $a <=> $b } keys %SYSLOG_NAMES;
 }
 
 =head2 get_all_syslog_aliases()
@@ -321,19 +321,19 @@ Returns a hash reference mapping all aliases to their canonical names.
 =cut
 
 sub get_all_syslog_aliases {
-    my %aliases;
+	my %aliases;
 
-    for my $alias (keys %SYSLOG_LEVELS) {
-        my $numeric = $SYSLOG_LEVELS{$alias};
-        my $canonical = $SYSLOG_NAMES{$numeric};
+	for my $alias (keys %SYSLOG_LEVELS) {
+		my $numeric = $SYSLOG_LEVELS{$alias};
+		my $canonical = $SYSLOG_NAMES{$numeric};
 
-        # Only include if it's not the canonical name
-        if ($alias ne $canonical) {
-            $aliases{$alias} = $canonical;
-        }
-    }
+		# Only include if it's not the canonical name
+		if ($alias ne $canonical) {
+			$aliases{$alias} = $canonical;
+		}
+	}
 
-    return \%aliases;
+	return \%aliases;
 }
 
 =head2 compare_syslog_levels($level1, $level2)
@@ -347,17 +347,17 @@ Accepts both numeric and string levels.
 =cut
 
 sub compare_syslog_levels {
-    my ($level1, $level2) = @_;
+	my ($level1, $level2) = @_;
 
-    unless (defined $level1 && defined $level2) {
-        croak 'compare_syslog_levels: both levels are required';
-    }
+	unless (defined $level1 && defined $level2) {
+		croak 'compare_syslog_levels: both levels are required';
+	}
 
-    # Convert both to numeric for comparison
-    my $num1 = looks_like_number($level1) ? int($level1) : get_syslog_level($level1);
-    my $num2 = looks_like_number($level2) ? int($level2) : get_syslog_level($level2);
+	# Convert both to numeric for comparison
+	my $num1 = looks_like_number($level1) ? int($level1) : get_syslog_level($level1);
+	my $num2 = looks_like_number($level2) ? int($level2) : get_syslog_level($level2);
 
-    return $num1 <=> $num2;
+	return $num1 <=> $num2;
 }
 
 # Export control
