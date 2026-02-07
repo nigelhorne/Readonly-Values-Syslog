@@ -1,5 +1,6 @@
 bin/syslog-utils
 Changes
+cpanfile
 lib/Readonly/Values/Syslog.pm
 LICENSE
 Makefile.PL
